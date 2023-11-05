@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import flagsmith from 'flagsmith'
+import { FlagsmithProvider } from 'flagsmith/react'
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -9,7 +11,12 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <FlagsmithProvider options={{
+        environmentID: "QjgYur4LQTwe5HpvbvhpzK",
+        cacheFlags:true
+    }} flagsmith={flagsmith}>
+      <App />
+    </FlagsmithProvider>
   </React.StrictMode>
 );
 
