@@ -12,7 +12,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <FlagsmithProvider options={{
-        environmentID: "QjgYur4LQTwe5HpvbvhpzK",
+        environmentID: "DCYBQgBcuRF86fmvgZc2os",
         cacheFlags:true
     }} flagsmith={flagsmith}>
       <App />
