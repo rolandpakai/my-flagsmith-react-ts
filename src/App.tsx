@@ -10,6 +10,7 @@ const cryptoWallets: CryptoWalletType[] = [
   {
     id: 0,
     orderId: 0,
+    enabled: true,
     name: "wallet-metamask",
     label: "MetaMask",
     svg: <MetaMask />
@@ -17,6 +18,7 @@ const cryptoWallets: CryptoWalletType[] = [
   {
     id: 1,
     orderId: 1,
+    enabled: true,
     name: "wallet-coinbase ",
     label: "Coinbase Wallet",
     svg: <Coinbase />
@@ -24,6 +26,7 @@ const cryptoWallets: CryptoWalletType[] = [
   {
     id: 2,
     orderId: 2,
+    enabled: true,
     name: "wallet-opera",
     label: "Opera Wallet",
     svg: <Opera />
@@ -31,6 +34,7 @@ const cryptoWallets: CryptoWalletType[] = [
   {
     id: 3,
     orderId: 3,
+    enabled: true,
     name: "wallet-connect",
     label: "WalletConnect",
     svg: <WalletConnect />
@@ -38,6 +42,7 @@ const cryptoWallets: CryptoWalletType[] = [
   {
     id: 4,
     orderId: 4,
+    enabled: true,
     name: "wallet-fortmatic",
     label: "Fortmatic",
     svg: <Fortmatic />
