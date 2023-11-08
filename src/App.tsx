@@ -1,29 +1,45 @@
 import { useEffect } from 'react';
 import { useFlags, useFlagsmith } from 'flagsmith/react';
 import { IFlags, IFlagsmith, IFlagsmithFeature } from 'flagsmith/types';
-import { CryptoCard, CryptoCardType, CryptoWalletType } from './components/crypto-card';
+import { CryptoCard, CryptoCardType } from './components/crypto-card';
 import { Coinbase, Fortmatic, MetaMask, Opera, WalletConnect } from './components/svg';
+import { CryptoWalletType } from './models';
 import './App.css';
 
 const cryptoWallets: CryptoWalletType[] = [
   {
-    name: "MetaMask",
+    id: 0,
+    orderId: 0,
+    name: "wallet-metamask",
+    label: "MetaMask",
     svg: <MetaMask />
   },
   {
-    name: "Coinbase Wallet",
+    id: 1,
+    orderId: 1,
+    name: "wallet-coinbase ",
+    label: "Coinbase Wallet",
     svg: <Coinbase />
   },
   {
-    name: "Opera Wallet",
+    id: 2,
+    orderId: 2,
+    name: "wallet-opera",
+    label: "Opera Wallet",
     svg: <Opera />
   },
   {
-    name: "WalletConnect",
+    id: 3,
+    orderId: 3,
+    name: "wallet-connect",
+    label: "WalletConnect",
     svg: <WalletConnect />
   },
   {
-    name: "Fortmatic",
+    id: 4,
+    orderId: 4,
+    name: "wallet-fortmatic",
+    label: "Fortmatic",
     svg: <Fortmatic />
   },
 ];
