@@ -1,4 +1,4 @@
-import { CryptoWalletType, CryptoWalletsType } from '../../models';
+import { CryptoWalletsType } from '../../models';
 import CryptoWallet from './CryptoWallet';
 
 export type CryptoWalletListType = {
@@ -11,7 +11,7 @@ const CryptoWalletList: React.FC<CryptoWalletListType> = ({ cryptoWallets }) => 
 
   return (
       <ul className="my-4 space-y-3">
-        {sortedCryptoWallets.map((key) => (
+        {sortedCryptoWallets.map((key) => cryptoWallets[key].enabled && (
           <li key={key}>
             <CryptoWallet {...cryptoWallets[key]} />
           </li>
