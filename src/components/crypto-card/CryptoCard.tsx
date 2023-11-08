@@ -1,9 +1,9 @@
 import { Card } from 'flowbite-react';
-import { CryptoWalletType } from './CryptoWallet';
 import CryptoCardFooter from './CryptoCardFooter';
 import CryptoCardHeader from './CryptoCardHeader';
 import CryptoCardParagraph from './CryptoCardParagraph';
 import CryptoWalletList from './CryptoWalletList';
+import { CryptoWalletType } from '../../models';
 import { QuestionMark } from '../svg';
 
 export type CryptoCardType = {
