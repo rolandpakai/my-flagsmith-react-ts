@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useFlags, useFlagsmith } from 'flagsmith/react';
 import { IFlags, IFlagsmith, IFlagsmithFeature } from 'flagsmith/types';
 import { CryptoCard, CryptoCardType } from './components/crypto-card';
@@ -10,7 +10,7 @@ type CryptoWalletsType = {
   [key: string]: CryptoWalletType;
 };
 
-const cryptoWallets: CryptoWalletsType = {
+const initCryptoWallets: CryptoWalletsType = {
   "wallet-metamask": {
     id: 0,
     orderId: 0,
@@ -56,12 +56,24 @@ const cryptoWallets: CryptoWalletsType = {
 function App() {
   const flags = useFlags(['wallet-connect', 'wallet-fortmatic']); // only causes re-render if specified flag values / traits change
   const flagsmith: IFlagsmith<string, string> = useFlagsmith();
+  const [cryptoWallets, setCryptoWallets] = useState<CryptoWalletsType>(initCryptoWallets);
 
   const cryptoCard: CryptoCardType = {
     headerText: "Connect wallet",
     paragraphText: "Connect with one of our available wallet providers or create a new one.",
     footerText: "Why do I need to connect with my wallet?",
     cryptoWallets,
+  }
+
+  const updateCryptoWallets = (flags: IFlags<string>) =>{ 
+    setCryptoWallets((prevState) => {
+      return Object.keys(flags).reduce((acc, key) => {
+        if (prevState[key]) {
+          return { ...acc, [key]: { ...prevState[key], enabled: flags[key].enabled } };
+        }
+        return acc;
+      }, { ...prevState });
+    });
   }
 
   useEffect(() => {
@@ -75,6 +87,8 @@ function App() {
 
     const flagsmithState = flagsmith.getState();
     console.log("flagsmithState", flagsmithState);
+
+    updateCryptoWallets(allFlags);
 
   }, [flags, flagsmith]);
 
