@@ -3,14 +3,14 @@ import CryptoCardFooter from './CryptoCardFooter';
 import CryptoCardHeader from './CryptoCardHeader';
 import CryptoCardParagraph from './CryptoCardParagraph';
 import CryptoWalletList from './CryptoWalletList';
-import { CryptoWalletType } from '../../models';
+import { CryptoWalletsType } from '../../models';
 import { QuestionMark } from '../svg';
 
 export type CryptoCardType = {
   headerText: string;
   paragraphText: string;
   footerText: string;
-  cryptoWallets: CryptoWalletType[];
+  cryptoWallets: CryptoWalletsType;
 }
 
 const CryptoCard: React.FC<CryptoCardType> = ({ headerText, paragraphText, footerText, cryptoWallets }) => {

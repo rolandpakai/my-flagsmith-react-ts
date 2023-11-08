@@ -6,8 +6,12 @@ import { Coinbase, Fortmatic, MetaMask, Opera, WalletConnect } from './component
 import { CryptoWalletType } from './models';
 import './App.css';
 
-const cryptoWallets: CryptoWalletType[] = [
-  {
+type CryptoWalletsType = {
+  [key: string]: CryptoWalletType;
+};
+
+const cryptoWallets: CryptoWalletsType = {
+  "wallet-metamask": {
     id: 0,
     orderId: 0,
     enabled: true,
@@ -15,15 +19,15 @@ const cryptoWallets: CryptoWalletType[] = [
     label: "MetaMask",
     svg: <MetaMask />
   },
-  {
+  "wallet-coinbase": {
     id: 1,
     orderId: 1,
     enabled: true,
-    name: "wallet-coinbase ",
+    name: "wallet-coinbase",
     label: "Coinbase Wallet",
     svg: <Coinbase />
   },
-  {
+  "wallet-opera": {
     id: 2,
     orderId: 2,
     enabled: true,
@@ -31,7 +35,7 @@ const cryptoWallets: CryptoWalletType[] = [
     label: "Opera Wallet",
     svg: <Opera />
   },
-  {
+  "wallet-connect": {
     id: 3,
     orderId: 3,
     enabled: true,
@@ -39,7 +43,7 @@ const cryptoWallets: CryptoWalletType[] = [
     label: "WalletConnect",
     svg: <WalletConnect />
   },
-  {
+  "wallet-fortmatic": {
     id: 4,
     orderId: 4,
     enabled: true,
@@ -47,7 +51,7 @@ const cryptoWallets: CryptoWalletType[] = [
     label: "Fortmatic",
     svg: <Fortmatic />
   },
-];
+};
 
 function App() {
   const flags = useFlags(['wallet-connect', 'wallet-fortmatic']); // only causes re-render if specified flag values / traits change
