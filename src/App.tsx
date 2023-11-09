@@ -22,7 +22,19 @@ function App() {
     setCryptoWallets((prevState) => {
       return Object.keys(flags).reduce((acc, key) => {
         if (prevState[key]) {
-          return { ...acc, [key]: { ...prevState[key], enabled: flags[key].enabled } };
+          const enabled = flagsmith.hasFeature(key);
+          const jsonValue = flagsmith.getValue(key, {json: true});
+          let value;
+
+          if (typeof jsonValue !== "object") {
+            value = { "value": jsonValue };
+          } else {
+            value = jsonValue;
+          }
+
+          value = {...value, enabled };
+
+          return { ...acc, [key]: { ...prevState[key], ...value } };
         }
         return acc;
       }, { ...prevState });
@@ -30,19 +42,18 @@ function App() {
   }
 
   useEffect(() => {
-    console.log("flags", flags);
+    //console.log("flags", flags);
 
     const walletConnectFlag: IFlagsmithFeature = flags['wallet-connect'];
-    console.log("walletConnectFlag", walletConnectFlag);
+    //console.log("walletConnectFlag", walletConnectFlag);
+
+    const flagsmithState = flagsmith.getState();
+    //console.log("flagsmithState", flagsmithState);
 
     const allFlags: IFlags<string> = flagsmith.getAllFlags();
     console.log("allFlags", allFlags);
 
-    const flagsmithState = flagsmith.getState();
-    console.log("flagsmithState", flagsmithState);
-
     updateCryptoWallets(allFlags);
-
   }, [flags, flagsmith]);
 
   return (
